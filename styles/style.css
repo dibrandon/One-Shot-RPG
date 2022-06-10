@@ -1,0 +1,24 @@
+
+
+
+/* #canva {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+} */
+/* #canva {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: baseline;
+	align-content: stretch;
+} */
+
+canvas {
+    border: 1px solid red;
+  }
+  
