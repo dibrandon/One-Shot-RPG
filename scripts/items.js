@@ -45,3 +45,17 @@ class smallWeapons {
         return this.car
     }
 }
+
+class normalWeapon {
+    constructor(damage, car){
+        this.damage = damage;
+        this.car = car;
+    }
+    damage(){
+        return this.damage
+    }
+    car(){
+        return this.car
+    }
+
+}
