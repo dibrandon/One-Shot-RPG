@@ -36,13 +36,11 @@ let per = usar(3, 6)
 let dex = usar(3, 6)
 let apa = usar(3, 6)
 
-
 let imgFondo = new Image();
 imgFondo.src = "./src/fondo.png"
 
 let imgPJ = new Image();
 imgPJ.src ="./src/PelotaGoomba.png"
-
 
 const pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 500, 30, 30, imgPJ, ctx)
 
@@ -55,17 +53,17 @@ const startGame = () => {
 
 const moverPJ = (e) => {
     pjPrincipal.borrar();
-    if (e.key === "ArrowLeft") {
-        pjPrincipal.x -= 5;
+    if (e.key === "ArrowLeft" && pjPrincipal.x > 0) {
+        pjPrincipal.x -= 10;
     }
-    if (e.key === "ArrowRight") {
-        pjPrincipal.x += 5;
+    if (e.key === "ArrowRight" && pjPrincipal.x < 320) {
+        pjPrincipal.x += 10;
     }
-    if (e.key === "ArrowUp") {
-        pjPrincipal.y -= 5;
+    if (e.key === "ArrowUp" && pjPrincipal.y > 0) {
+        pjPrincipal.y -= 10;
     }
-    if (e.key === "ArrowDown") {
-        pjPrincipal.y += 5;
+    if (e.key === "ArrowDown" && pjPrincipal.y < 550) {
+        pjPrincipal.y += 10;
     }
     
     ctx.drawImage(imgFondo, 0, 0)
