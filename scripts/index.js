@@ -19,7 +19,7 @@ imgFondo.src = "./src/fondo.png"
 let imgPJ = new Image();
 imgPJ.src ="./src/PelotaGoomba.png"
 
-const
+
 const coche = new Ficha(250, 0, 60, 60, cocheImagen, ctx);
 
 const startGame = () => {

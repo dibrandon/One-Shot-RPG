@@ -1,6 +1,6 @@
 // hoja/plantilla de culaquier personaje en el juego.
 class Ficha {
-    constructor(xName, str, con, tam, int, per, dex, apa) {
+    constructor(xName, str, con, tam, int, per, dex, apa, x, y, ancho, alto, imagen, ctx) {
         this.xName = xName;
         this.hp = hp;
         this.mp = mp;
@@ -23,9 +23,22 @@ class Ficha {
         this.comunication = int + ((per + apa) / 2);
         this.intimidate = 5;
         this.fluentSpeach = 5;
-
+        this.x = x;
+        this.y = y;
+        this.ancho = ancho;
+        this.alto = alto;
+        this.imagen = imagen;
+        this.ctx = ctx;
 
     }
+    
+dibujar() {
+  ctx.drawImage(this.imagen, this.x, this.y, this.ancho, this.alto);
+}
+
+borrar() {
+  ctx.clearRect(this.x, this.y, this.ancho, this.alto);
+}
     //equipar Arma
     equipWeapon(newWeapon){
          this.weapon = newWeapon
