@@ -60,15 +60,27 @@ const moverPJ = (e) => {
     pjPrincipal.borrar();
     if (e.key === "ArrowLeft" && pjPrincipal.x > 0) {
         pjPrincipal.x -= 10;
+        if (pjPrincipal.detectarColision(campamentoNecro)){
+            console.log("va")
+        }
     }
     if (e.key === "ArrowRight" && pjPrincipal.x < 320) {
         pjPrincipal.x += 10;
+        if (pjPrincipal.detectarColision(campamentoNecro)){
+            console.log("va")
+        }
     }
     if (e.key === "ArrowUp" && pjPrincipal.y > 0) {
         pjPrincipal.y -= 10;
+        if (pjPrincipal.detectarColision(campamentoNecro)){
+            alert("stop interaccion")
+        }
     }
     if (e.key === "ArrowDown" && pjPrincipal.y < 550) {
         pjPrincipal.y += 10;
+        if (pjPrincipal.detectarColision(campamentoNecro)){
+            console.log("va")
+        }
     }
     ctx.drawImage(imgFondo, 0, 0)
     campamentoNecro.construir()
