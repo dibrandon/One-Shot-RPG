@@ -42,11 +42,16 @@ imgFondo.src = "./src/fondo.png"
 let imgPJ = new Image();
 imgPJ.src ="./src/PelotaGoomba.png"
 
+let imgCampamento = new Image();
+imgCampamento.src = "./src/necroRuinas.png"
+
 const pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 500, 30, 30, imgPJ, ctx)
+const campamentoNecro = new Location("Necro", 130, 0, 101, 53, imgCampamento, ctx)
 
 const startGame = () => {
 
     ctx.drawImage(imgFondo, 0, 0)
+    campamentoNecro.construir()
     pjPrincipal.invocarPJ();
     
 }
@@ -65,8 +70,8 @@ const moverPJ = (e) => {
     if (e.key === "ArrowDown" && pjPrincipal.y < 550) {
         pjPrincipal.y += 10;
     }
-    
     ctx.drawImage(imgFondo, 0, 0)
+    campamentoNecro.construir()
     pjPrincipal.invocarPJ();
   };
 
