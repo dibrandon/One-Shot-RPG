@@ -1,14 +1,14 @@
 // items 
 
-class PotionHP {
-    constructor (hpRestoration){
-        this.hpRestoration = hpRestoration
+class Potion {
+    constructor (restoration){
+        this.restoration = restoration
     }
-    hpPotion(){
-        return this.hpRestoration
+     usePot(){
+        return this.restoration
     }
 }
-
+/*
 class PotionMP {
     constructor (mpRestoration){
         this.mpRestoration = mpRestoration
@@ -26,14 +26,14 @@ class PotionPF {
         return this.pfRestoration
     }
 }
-
-class raiseIntimidate {
+*/
+class RaiseIntimidate {
     constructor(raiseIntimidate){
         this.raiseIntimidate = raiseIntimidate
     }
 }
 
-class smallWeapons {
+class Weapon {
     constructor(damage, car){
         this.damage = damage;
         this.car = car;
@@ -46,13 +46,13 @@ class smallWeapons {
     }
 }
 
-class normalWeapon {
-    constructor(damage, car){
-        this.damage = damage;
+class Armor{
+    constructor(armor, car){
+        this.armor = armor;
         this.car = car;
     }
-    damage(){
-        return this.damage
+    armor(){
+        return this.armor
     }
     car(){
         return this.car

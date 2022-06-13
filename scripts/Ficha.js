@@ -12,8 +12,8 @@ console.log( str, con, tam, int, per, dex, apa)
 
 // it work
 class Ficha {
-    constructor(newName, str, con, tam, int, per, dex, apa) {
-        this.newName = newName;
+    constructor(xName, str, con, tam, int, per, dex, apa) {
+        this.xName = xName;
         this.hp = hp;
         this.mp = mp;
         this.pf = pf;
