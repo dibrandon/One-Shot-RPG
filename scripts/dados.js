@@ -3,7 +3,7 @@ class dados{
         this.guardarTiradas = 0
     }
 
-usarD(cantidadDeDados, carasDelDado) {
+usar(cantidadDeDados, carasDelDado) {
     let result = 0;
     for (i = 1; i <= cantidadDeDados; i++) {
 
@@ -17,12 +17,10 @@ usarD(cantidadDeDados, carasDelDado) {
 
 
 }
-
+tiradaAnterior(){
+    return this.guardarTiradas
+}
 
 }
-/*
-console.log(dados(3, 6) + 6);
-console.log(dados(3, 6));
-console.log(dados(10, 6));
-*/
-// it works 
+
+

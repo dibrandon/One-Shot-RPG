@@ -1,16 +1,4 @@
-
-// stats declarados con la funcion de llamar dados
-let str = dados(3, 6)
-let con = dados(3, 6)
-let tam = dados(2, 6) + 6
-let int = dados(2, 6) + 6
-let per = dados(3, 6)
-let dex = dados(3, 6)
-let apa = dados(3, 6)
-
-console.log( str, con, tam, int, per, dex, apa)
-
-// it work
+// hoja/plantilla de culaquier personaje en el juego.
 class Ficha {
     constructor(xName, str, con, tam, int, per, dex, apa) {
         this.xName = xName;
