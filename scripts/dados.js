@@ -1,9 +1,9 @@
-class dados{
+class Dados{
     constructor(){
         this.guardarTiradas = 0
     }
 
-usar(cantidadDeDados, carasDelDado) {
+usar(cantidadDeDados, carasDelDado){
     let result = 0;
     for (i = 1; i <= cantidadDeDados; i++) {
 
@@ -12,15 +12,12 @@ usar(cantidadDeDados, carasDelDado) {
 
 
     }
-    this.guardarTiradas = result
+//    this.guardarTiradas = result
     return result;
-
-
-}
-tiradaAnterior(){
-    return this.guardarTiradas
 }
 
+
 }
+
 
 

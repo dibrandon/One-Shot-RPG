@@ -2,9 +2,9 @@
 class Ficha {
     constructor(xName, str, con, tam, int, per, dex, apa, x, y, ancho, alto, imagen, ctx) {
         this.xName = xName;
-        this.hp = hp;
-        this.mp = mp;
-        this.pf = pf;
+        this.hp = 10;
+        this.mp = 10;
+        this.pf = 10;
         this.str = str;
         this.con = con;
         this.tam = tam;
@@ -32,7 +32,7 @@ class Ficha {
 
     }
     
-dibujar() {
+invocarPJ() {
   ctx.drawImage(this.imagen, this.x, this.y, this.ancho, this.alto);
 }
 
