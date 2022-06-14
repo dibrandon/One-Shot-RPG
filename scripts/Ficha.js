@@ -34,38 +34,45 @@ class Ficha {
     
     detectarColision = (otroObjeto) => {
         if (otroObjeto.y + otroObjeto.alto < this.y) {
+//            console.log("entra por Ficha")
           return "";
         }
         if (otroObjeto.x + otroObjeto.ancho < this.x) {
+  //          console.log("entra por Ficha")
           return "";
+          
         }
         if (this.y + this.alto < otroObjeto.y) {
+    //        console.log("entra por Ficha")
           return "";
         }
         if (this.x + this.ancho < otroObjeto.x) {
+    //        console.log("entra por Ficha")
           return "";
         }
     
         if (otroObjeto.y + otroObjeto.alto === this.y) {
+   //         console.log("entra por Ficha")
           return "colision-superior";
         }
     
         if (otroObjeto.x + otroObjeto.ancho === this.x) {
+   //         console.log("entra por Ficha")
           return "colision-izquierda";
         }
     
         if (otroObjeto.x === this.x + this.ancho) {
+//            console.log("entra por Ficha")
           return "colision-derecha";
         }
     
         if (this.y + this.alto === otroObjeto.y) {
-          //Por probar
-          return "colision-inferior";
+          
+            return "colision-inferior";
         }
-    
         return "colision";
       };
-      
+
 invocarPJ() {
   ctx.drawImage(this.imagen, this.x, this.y, this.ancho, this.alto);
 }
