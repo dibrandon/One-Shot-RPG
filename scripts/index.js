@@ -54,18 +54,19 @@ let imgGuardias = new Image();
 imgGuardias.src = "./src/guardias.png"
 
 
-const pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 500, 30, 30, imgPJ, ctx)
+var pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 500, 30, 30, imgPJ, ctx)
 
 const campamentoNecro = new Location("Necro", 130, 0, 101, 53, imgCampamento, ctx, imgagenInte)
 const entradaCastillo = new Location ("El Paso", 275, 82, 75, 70, imgGuardias, ctx, imgGuardias)
 
 // console.log(pjPrincipal.comunication)
 const startGame = () => {
-    console.log(pjPrincipal.comunication)
+    
     ctx.drawImage(imgFondo, 0, 0)
     campamentoNecro.construir()
     entradaCastillo.construir()
     pjPrincipal.invocarPJ();
+    console.log(pjPrincipal.comunication)
 
     // ctx.drawImage(imgPJ, 50, 600)
     // entrarCamp()
