@@ -1,10 +1,11 @@
 // Necesario globlamente
 const canvas = document.getElementById('canvas-box');
 const ctx = canvas.getContext('2d');
-//let dado = new Dados()
+/*
+let dado = new Dados()
 
 // stats de personajes al azar con el objeto dado y su metodo de usar dados
-/*
+
 let str = dado.usar(3, 6)
 let con = dado.usar(3, 6)
 let tam = dado.usar(2, 6) + 6
@@ -12,8 +13,8 @@ let int = dado.usar(2, 6) + 6
 let per = dado.usar(3, 6)
 let dex = dado.usar(3, 6)
 let apa = dado.usar(3, 6)
-*/
 
+*/
 
 
 function usar(cantidadDeDados, carasDelDado) {
@@ -49,15 +50,23 @@ imgCampamento.src = "./src/necroRuinas.png"
 let imgagenInte = new Image();
 imgagenInte.src = "./src/interaccion.png"
 
+let imgGuardias = new Image();
+imgGuardias.src = "./src/guardias.png"
+
+
 const pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 500, 30, 30, imgPJ, ctx)
 
 const campamentoNecro = new Location("Necro", 130, 0, 101, 53, imgCampamento, ctx, imgagenInte)
+const entradaCastillo = new Location ("El Paso", 275, 82, 75, 70, imgGuardias, ctx, imgGuardias)
 
+// console.log(pjPrincipal.comunication)
 const startGame = () => {
-
+    console.log(pjPrincipal.comunication)
     ctx.drawImage(imgFondo, 0, 0)
     campamentoNecro.construir()
+    entradaCastillo.construir()
     pjPrincipal.invocarPJ();
+
     // ctx.drawImage(imgPJ, 50, 600)
     // entrarCamp()
     // moverPJ()
@@ -110,8 +119,8 @@ const moverPJ = (e) => {
 
     if (pjPrincipal.detectarColision(campamentoNecro)) {
         console.log("Entra el detectar desde el PJ")
-        eventoRPG();
-  ctx.drawImage(imgagenInte, 50, 600)
+       // eventoRPG();
+ // ctx.drawImage(imgagenInte, 50, 600)
     }
 }
 

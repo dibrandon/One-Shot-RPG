@@ -19,8 +19,8 @@ class Ficha {
         this.armor = 0;
         this.weapon = 0;
         this.spells = 0;
-        this.combatSkill = int + dex + (str / 2);
-        this.comunication = int + ((per + apa) / 2);
+        this.combatSkill = parseInt(int + dex + (str / 2));
+        this.comunication = parseInt(int + ((per + apa) / 2));
         this.intimidate = 5;
         this.fluentSpeach = 5;
         this.x = x;
