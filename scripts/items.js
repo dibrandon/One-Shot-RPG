@@ -8,25 +8,6 @@ class Potion {
         return this.restoration
     }
 }
-/*
-class PotionMP {
-    constructor (mpRestoration){
-        this.mpRestoration = mpRestoration
-    }
-    mpPotion(){
-        return this.mpRestoration
-    } 
-}
-
-class PotionPF {
-    constructor(pfRestoration){
-        this.pfRestoration = pfRestoration
-    }
-    pfPotion(){
-        return this.pfRestoration
-    }
-}
-*/
 class RaiseIntimidate {
     constructor(raiseIntimidate){
         this.raiseIntimidate = raiseIntimidate

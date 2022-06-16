@@ -15,7 +15,7 @@ function usar(cantidadDeDados, carasDelDado) {
 }
 
 
-function mapa(){
+function mapa() {
     ctx.drawImage(imgFondo, 20, 20)
 }
 
@@ -48,20 +48,23 @@ deadByGuards.src = "./src/deadByGuards.png"
 
 
 var pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 500, 30, 30, imgPJ, ctx)
-var guardias = new Ficha("guardias",24,30,16,17,23,36,21,130, 0, 101, 53, imgCampamento, ctx)
+var guardias = new Ficha("guardias", 24, 30, 16, 17, 23, 36, 21, 130, 0, 101, 53, imgCampamento, ctx)
 
 const campamentoNecro = new Location("Necro", 130, 0, 101, 53, imgCampamento, ctx, imgagenInte, deadByGuards)
-const entradaCastillo = new Location ("El Paso", 275, 82, 75, 70, imgGuardias, ctx, imgGuardias, deadByGuards)
+const entradaCastillo = new Location("El Paso", 275, 82, 75, 70, imgGuardias, ctx, imgGuardias, deadByGuards)
 
 const startGame = () => {
     ctx.drawImage(imgFondo, 0, 0)
     pjPrincipal.invocarPJ();
-    console.log(pjPrincipal.comunication) 
+    console.log(pjPrincipal.comunication)
+    console.log(pjPrincipal.combatSkill)
+    console.log(guardias.comunication)
+    console.log(guardias.combatSkill)
 
 }
 const moverPJ = (e) => {
     pjPrincipal.borrar();
-    
+
     if (e.key === "ArrowLeft" && pjPrincipal.x > 0) {
         pjPrincipal.x -= 30;
     }
@@ -78,20 +81,36 @@ const moverPJ = (e) => {
     ctx.drawImage(imgFondo, 0, 0)
     pjPrincipal.invocarPJ();
 
+
+
     if (campamentoNecro.detectarColision(pjPrincipal)) {
         console.log("entra el detectar desde campamento NECRO");
         ctx.drawImage(imgagenInte, 50, 600);
         mapa()
-        if (e.key === "Escape"){
-            pjPrincipal.invocarPJ()
+
+        if (e.key === "Escape" && pjPrincipal.combatSkill > guardias.combatSkill) {
+            console.log("ganaPJ")
+        } else {
+            console.log("gana Guardia")
         }
+    }
+    if (e.key === "Enter" && entradaCastillo.detectarColision(pjPrincipal)) {
+        alert("Alto ahi! no puedes pasar")
+        entradaCastillo.gameOverDieByLocation();
+        console.log("entra el detectar desde el campamento");
 
-    //     if (e.key === "ArrowUp"){
-    //     pjPrincipal.y += 10;
-    // }
-       }
-
+    }
 }
+
+let domCap = document.getElementById("pad")
+const texto = () => {let word = domCap.innerHTML += `<li><a href="#">${str}</a></li>`}
+let escuchar = domCap.addEventListener("click", texto)
+
+
+
+
+
+
 
 
 
@@ -102,6 +121,6 @@ const moverPJ = (e) => {
 
 //window.addEventListener("load", virtualPad)
 //window.addEventListener("keydown", innteractuarNecro)
-//window.addEventListener("keydown", entrarCamp);
+//window.addEventListener("keydown", eventos);
 window.addEventListener("load", startGame);
 window.addEventListener("keydown", moverPJ);
