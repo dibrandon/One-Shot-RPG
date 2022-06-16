@@ -1,21 +1,6 @@
 // Necesario globlamente
 const canvas = document.getElementById('canvas-box');
 const ctx = canvas.getContext('2d');
-/*
-let dado = new Dados()
-
-// stats de personajes al azar con el objeto dado y su metodo de usar dados
-
-let str = dado.usar(3, 6)
-let con = dado.usar(3, 6)
-let tam = dado.usar(2, 6) + 6
-let int = dado.usar(2, 6) + 6
-let per = dado.usar(3, 6)
-let dex = dado.usar(3, 6)
-let apa = dado.usar(3, 6)
-
-*/
-
 
 function usar(cantidadDeDados, carasDelDado) {
     let result = 0;
@@ -26,8 +11,12 @@ function usar(cantidadDeDados, carasDelDado) {
 
 
     }
-    //    this.guardarTiradas = result
     return result;
+}
+
+
+function mapa(){
+    ctx.drawImage(imgFondo, 20, 20)
 }
 
 
@@ -47,87 +36,72 @@ imgPJ.src = "./src/PelotaGoomba.png"
 
 let imgCampamento = new Image();
 imgCampamento.src = "./src/necroRuinas.png"
+
 let imgagenInte = new Image();
 imgagenInte.src = "./src/interaccion.png"
 
 let imgGuardias = new Image();
 imgGuardias.src = "./src/guardias.png"
 
+let deadByGuards = new Image();
+deadByGuards.src = "./src/deadByGuards.png"
+
 
 var pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 500, 30, 30, imgPJ, ctx)
+var guardias = new Ficha("guardias",24,30,16,17,23,36,21,130, 0, 101, 53, imgCampamento, ctx)
 
-const campamentoNecro = new Location("Necro", 130, 0, 101, 53, imgCampamento, ctx, imgagenInte)
-const entradaCastillo = new Location ("El Paso", 275, 82, 75, 70, imgGuardias, ctx, imgGuardias)
+const campamentoNecro = new Location("Necro", 130, 0, 101, 53, imgCampamento, ctx, imgagenInte, deadByGuards)
+const entradaCastillo = new Location ("El Paso", 275, 82, 75, 70, imgGuardias, ctx, imgGuardias, deadByGuards)
 
-// console.log(pjPrincipal.comunication)
 const startGame = () => {
-    
     ctx.drawImage(imgFondo, 0, 0)
-    campamentoNecro.construir()
-    entradaCastillo.construir()
     pjPrincipal.invocarPJ();
-    console.log(pjPrincipal.comunication)
-
-    // ctx.drawImage(imgPJ, 50, 600)
-    // entrarCamp()
-    // moverPJ()
-    // setInterval(gameOver,20000)
+    console.log(pjPrincipal.comunication) 
 
 }
-
-const eventoRPG = () => {
-    campamentoNecro.interactuar()
-}
-
-const entrarCamp = () => {
-    if (campamentoNecro.detectarColision(pjPrincipal)) {
-        console.log("entra el detectar desde el campamento")
-        //        ctx.drawImage(imgFondo, 0, 0)
-        //        pjPrincipal.invocarPJ();
-        //        campamentoNecro.interactuar()
-    }
-
-}
-
 const moverPJ = (e) => {
     pjPrincipal.borrar();
+    
     if (e.key === "ArrowLeft" && pjPrincipal.x > 0) {
-        pjPrincipal.x -= 10;
-        // if (pjPrincipal.detectarColision(campamentoNecro)){
-
-        // }
+        pjPrincipal.x -= 30;
     }
     if (e.key === "ArrowRight" && pjPrincipal.x < 320) {
-        pjPrincipal.x += 10;
-        // if (pjPrincipal.detectarColision(campamentoNecro)){
-
-        // }
+        pjPrincipal.x += 30;
     }
     if (e.key === "ArrowUp" && pjPrincipal.y > 0) {
         pjPrincipal.y -= 10;
     }
-
-
     if (e.key === "ArrowDown" && pjPrincipal.y < 550) {
-        pjPrincipal.y += 10;
-        // if (pjPrincipal.detectarColision(campamentoNecro)){
-
-        // }
+        pjPrincipal.y += 30;
     }
+
     ctx.drawImage(imgFondo, 0, 0)
     pjPrincipal.invocarPJ();
-    ctx.drawImage(imgPJ, 50, 600)
 
-    if (pjPrincipal.detectarColision(campamentoNecro)) {
-        console.log("Entra el detectar desde el PJ")
-       // eventoRPG();
- // ctx.drawImage(imgagenInte, 50, 600)
-    }
+    if (campamentoNecro.detectarColision(pjPrincipal)) {
+        console.log("entra el detectar desde campamento NECRO");
+        ctx.drawImage(imgagenInte, 50, 600);
+        mapa()
+        if (e.key === "Escape"){
+            pjPrincipal.invocarPJ()
+        }
+
+    //     if (e.key === "ArrowUp"){
+    //     pjPrincipal.y += 10;
+    // }
+       }
+
 }
 
-//};
+
+
+
+
+
+
 
 //window.addEventListener("load", virtualPad)
-window.addEventListener("keydown", entrarCamp)
+//window.addEventListener("keydown", innteractuarNecro)
+//window.addEventListener("keydown", entrarCamp);
 window.addEventListener("load", startGame);
 window.addEventListener("keydown", moverPJ);

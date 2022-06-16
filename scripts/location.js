@@ -1,5 +1,5 @@
 class Location {
-    constructor (xName, x, y, ancho, alto, imagen, ctx, imgagenInte){
+    constructor (xName, x, y, ancho, alto, imagen, ctx, imgagenInte, deadByGuards){
         this.name = xName
         this.x = x;
         this.y = y;
@@ -7,6 +7,7 @@ class Location {
         this.alto = alto;
         this.imagen = imagen;
         this.imgagenInte = imgagenInte
+        this.deadByGuards = deadByGuards
         this.ctx = ctx; 
     }
     construir() {
@@ -18,6 +19,10 @@ class Location {
       }
       interactuar() {
         ctx.drawImage(this.imgagenInte, this.x, this.y, this.ancho, this.alto);
+      }
+
+      gameOverDieByLocation() {
+          this.ctx.drawImage(this.deadByGuards, 0, 0, 300, 300)
       }
 
       detectarColision = (otroObjeto) => {

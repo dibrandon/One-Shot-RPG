@@ -1,10 +1,16 @@
-let virtualPad = document.getElementById("upBtn").addEventListener("ontouchstart", moverPJpad);
-const moverPJpad = (e) => {
-    if (pjPrincipal.y > 0) {
-        pjPrincipal.y -= 10;
-        console.log("pad");
-        if (pjPrincipal.detectarColision(campamentoNecro)) {
-            alert("stop interaccion");
-        }
-    }
-};
+// let upBtn = document.getElementById("upBtn")
+// const moverPJpad = (e) => {
+//     if (e.key === upBtn && pjPrincipal.y > 0) {
+//         pjPrincipal.y -= 10;
+//     }
+// };
+// let upBtn = document.getElementById("upBtn")
+// const moverPJpad = (e) => {
+//     pjPrincipal.borrar();
+//     if (e.key === upBtn && pjPrincipal.y > 0) {
+//         pjPrincipal.y -= 10;
+//     }
+//     ctx.drawImage(imgFondo, 0, 0)
+//     pjPrincipal.invocarPJ();
+// };
+
