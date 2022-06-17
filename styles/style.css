@@ -2,33 +2,53 @@ body {
 	text-align: center;
 	margin: 0 auto;
 }
+a {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+	margin-right: 5px;
+
+	text-align: left;
+}
+p {
+	margin: 5px;
+}
 .container {
-	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+#menuNav {
+	width: 350px; 
+	height: 170;
 	text-align: center;
+	align-content: center;
+	align-items: center;
 	margin: 0 auto;
-	/*background-color: blue;*/
 }
 
+ nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	align-content: center;
+	padding: 0;
+	margin: 0;
+  } 
 
-/* #canva {
+
+  .total {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
 	align-content: stretch;
-} */
-/* #canva {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: baseline;
-	align-content: stretch;
-} */
-
-canvas {
-    border: 1px solid red;
-	background-image: "./scripts/index.js";
   }
   
