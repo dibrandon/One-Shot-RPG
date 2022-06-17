@@ -57,6 +57,12 @@ imgTaberna.src = "./src/taberna.png"
 let imgCampamentoInteraccion= new Image();
 imgCampamentoInteraccion.src = "./src/campamentoInteractuar.png"
 
+let imgWin = new Image();
+imgWin.src = "./src/win.png"
+
+let gameOver = new Image()
+gameOver.src = "./src/gameOverCanvas.png"
+
 var pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 400, 30, 30, imgPJ, ctx)
 var guardias = new Ficha("guardias", 24, 30, 16, 17, 23, 36, 21, 130, 0, 101, 53, imgCampamento, ctx)
 
@@ -100,6 +106,9 @@ const moverPJ = (e) => {
         alert("Alto ahi! No puedes pasar, vete!")
         entradaCastillo.gameOverDieByLocation();
         console.log("entra el detectar desde el campamento");
+        if (pjPrincipal.moneyBag > 100){
+            ctx.drawImage(imgWin, 0,0,350,460)
+        }else{ctx.drawImage(gameOver, 0,0,350,460)}
     }
     if (campamentoVol.detectarColision(pjPrincipal)){
         ctx.drawImage(imgCampamentoInteraccion, 0,0,350,460)
@@ -123,7 +132,6 @@ let verChapines = pjPrincipal.moneyBag
 
 
 
-const chapitas = () => { mostrarChapines.innerHTML = `<li><a href="#">${verChapines}</a></li>`}
 
 //mostrarChapines.innerHTML = `Chapines: ${verChapines}`
 
@@ -132,10 +140,12 @@ const textTabern = () => {
     if((usar(8,6)< pjPrincipal.comunication) && (pjPrincipal.detectarColision(taberna)|| pjPrincipal.detectarColision(campamentoNecro) || pjPrincipal.detectarColision(campamentoVol))) {
         rolInst.innerHTML = `<p>Encuentras algo similiar a una moneda, digamosle chapin.</p>`
        pjPrincipal.moneyBag += 1
-       console.log(pjPrincipal.moneyBag + " ok") 
-       chapitas()
+       console.log(pjPrincipal.moneyBag) 
+       mostrarChapines.innerHTML = `<li><a href="#">${verChapines}</a></li>`
     }else{rolInst.innerHTML = `<p>Definitivamente aqui no hay nada`}
 } 
+
+const chapitas = () => { mostrarChapines.innerHTML = `<li><a href="#">${verChapines}</a></li>`}
 
 const combatSkill = () => {showCombatSkill.innerHTML = `<li>Habilidad Combate: ${pjPrincipal.combatSkill} Chapines: ${verChapines}</a></li>`}
 //mostrarChapines.innerHTML = `Chapines: ${verChapines}`
@@ -153,11 +163,15 @@ const escapar = () => {
     }else{console.log("game over")}
 }
 
+const finalNoche = () => {
+    ctx.drawImage(gameOver, 0,0,350,460)
+}
 const startGame = () => {
     ctx.drawImage(imgFondo, 0, 0)
     pjPrincipal.invocarPJ();
     combatSkill()
     //chapitas()
+    
     console.log(pjPrincipal.comunication)
     console.log(pjPrincipal.combatSkill)
     console.log(pjPrincipal.sigilo)
@@ -168,6 +182,7 @@ const startGame = () => {
 
 // domCap.innerHTML += `<li><a href="#">${str}</a></li>`
 // mostrarChapines.addEventListener("click,", showChapines);
+const gameOverCounter = setTimeout(finalNoche, 60000);
 mostrarChapines.addEventListener("click", chapitas)
 domCap.addEventListener("click", escapar);
 window.addEventListener("load", startGame);
