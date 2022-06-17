@@ -54,6 +54,8 @@ imgCampVol.src = "./src/campamento.png"
 let imgTaberna = new Image();
 imgTaberna.src = "./src/taberna.png"
 
+let imgCampamentoInteraccion= new Image();
+imgCampamentoInteraccion.src = "./src/campamentoInteractuar.png"
 
 var pjPrincipal = new Ficha("gil", str, con, tam, int, per, dex, apa, 50, 400, 30, 30, imgPJ, ctx)
 var guardias = new Ficha("guardias", 24, 30, 16, 17, 23, 36, 21, 130, 0, 101, 53, imgCampamento, ctx)
@@ -65,18 +67,8 @@ imgagenInte, deadByGuards)
 const taberna = new Location("Esperanza Lunar", 40, 224, 90, 99, imgTaberna, ctx,
 imgagenInte, deadByGuards)
 
-const startGame = () => {
-    ctx.drawImage(imgFondo, 0, 0)
-    pjPrincipal.invocarPJ();
-    combatSkill()
-    mostrarChapines.innerHTML = `Chapines: ${verChapines}`
-    console.log(pjPrincipal.comunication)
-    console.log(pjPrincipal.combatSkill)
-    console.log(pjPrincipal.sigilo)
-    console.log(guardias.comunication)
-    console.log(guardias.combatSkill)
 
-}
+
 const moverPJ = (e) => {
     pjPrincipal.borrar();
 
@@ -97,22 +89,25 @@ const moverPJ = (e) => {
     pjPrincipal.invocarPJ();
     rolInst.innerHTML = `<p>Entra al Castillo antes del anochecer  <br>
     Busca monedas para sobornar a los guardias`
+    //mostrarChapines.innerHTML = `<p>Chapines: ${verChapines}</p>`
+
 
     if (campamentoNecro.detectarColision(pjPrincipal)) {
         console.log("entra el detectar desde campamento NECRO");
-        ctx.drawImage(imgagenInte, 50,00);
+        ctx.drawImage(imgagenInte, 0,0, 350, 460);
     }  
     if (entradaCastillo.detectarColision(pjPrincipal)) {
-        alert("Alto ahi! no puedes pasar")
+        alert("Alto ahi! No puedes pasar, vete!")
         entradaCastillo.gameOverDieByLocation();
         console.log("entra el detectar desde el campamento");
     }
     if (campamentoVol.detectarColision(pjPrincipal)){
-        campamentoVol.gameOverDieByLocation();
+        ctx.drawImage(imgCampamentoInteraccion, 0,0,350,460)
+        
         console.log("entra desde campamento vol")
     }
     if (taberna.detectarColision(pjPrincipal)) {
-        taberna.gameOverDieByLocation();
+        ctx.drawImage(imgTaberna, 0, 0, 350, 460)
         btnCojer.addEventListener("click", textTabern)
         console.log("entra desde la taberna")
     }
@@ -125,19 +120,24 @@ let rolInst = document.getElementById("rol")
 let showCombatSkill = document.getElementById("skill")
 let mostrarChapines = document.getElementById("monedas")
 let verChapines = pjPrincipal.moneyBag
-mostrarChapines.innerHTML = `Chapines: ${verChapines}`
+
+
+
+const chapitas = () => { mostrarChapines.innerHTML = `<li><a href="#">${verChapines}</a></li>`}
+
+//mostrarChapines.innerHTML = `Chapines: ${verChapines}`
 
 
 const textTabern = () => {
-    if((usar(7,6)< pjPrincipal.comunication) && (pjPrincipal.detectarColision(taberna)|| pjPrincipal.detectarColision(campamentoNecro) || pjPrincipal.detectarColision(campamentoVol))) {
+    if((usar(8,6)< pjPrincipal.comunication) && (pjPrincipal.detectarColision(taberna)|| pjPrincipal.detectarColision(campamentoNecro) || pjPrincipal.detectarColision(campamentoVol))) {
         rolInst.innerHTML = `<p>Encuentras algo similiar a una moneda, digamosle chapin.</p>`
-       pjPrincipal.moneyBag = pjPrincipal.moneyBag + 1
-       console.log(pjPrincipal.moneyBag) 
-       mostrarChapines.innerHTML = `Chapines: ${verChapines}`
+       pjPrincipal.moneyBag += 1
+       console.log(pjPrincipal.moneyBag + " ok") 
+       chapitas()
     }else{rolInst.innerHTML = `<p>Definitivamente aqui no hay nada`}
 } 
 
-const combatSkill = () => {showCombatSkill.innerHTML = `<li>Habilidad Combate: ${pjPrincipal.combatSkill} </a></li>`}
+const combatSkill = () => {showCombatSkill.innerHTML = `<li>Habilidad Combate: ${pjPrincipal.combatSkill} Chapines: ${verChapines}</a></li>`}
 //mostrarChapines.innerHTML = `Chapines: ${verChapines}`
 
 
@@ -153,8 +153,22 @@ const escapar = () => {
     }else{console.log("game over")}
 }
 
+const startGame = () => {
+    ctx.drawImage(imgFondo, 0, 0)
+    pjPrincipal.invocarPJ();
+    combatSkill()
+    //chapitas()
+    console.log(pjPrincipal.comunication)
+    console.log(pjPrincipal.combatSkill)
+    console.log(pjPrincipal.sigilo)
+    console.log(guardias.comunication)
+    console.log(guardias.combatSkill)
+
+}
+
 // domCap.innerHTML += `<li><a href="#">${str}</a></li>`
 // mostrarChapines.addEventListener("click,", showChapines);
+mostrarChapines.addEventListener("click", chapitas)
 domCap.addEventListener("click", escapar);
 window.addEventListener("load", startGame);
 window.addEventListener("keydown", moverPJ);

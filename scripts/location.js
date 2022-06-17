@@ -22,7 +22,7 @@ class Location {
       }
 
       gameOverDieByLocation() {
-          this.ctx.drawImage(this.deadByGuards, 0, 0, 300, 300)
+          this.ctx.drawImage(this.deadByGuards, 0, 0, 350, 460)
       }
 
       detectarColision = (otroObjeto) => {
